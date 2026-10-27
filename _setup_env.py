@@ -46,7 +46,7 @@ def main():
     )
     parser.add_argument(
         "--venv",
-        default="2500_venv",
+        default="_2500_venv",
         help="Virtual-environment directory (default: .venv).",
     )
     args = parser.parse_args()
