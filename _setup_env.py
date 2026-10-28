@@ -23,11 +23,17 @@ PACKAGES = [
     "matplotlib-venn",
     "numpy",
     "scipy",
-    "pandas",
+    "pandas<3",
     "ipywidgets",
     "ipython",
 ]
 
+def default_python() -> str:
+    if sys.platform == "win32":
+        return "python"
+    else:
+        return "python3.14"
+    
 
 def run(command):
     """Run a command and stop if it fails."""
@@ -41,8 +47,8 @@ def main():
     )
     parser.add_argument(
         "--python",
-        default="python3.14",
-        help="Python 3.14 executable (default: python3.14).",
+        default=default_python(),
+        help="Python 3.14 executable (default: python3.14 or python on Windows).",
     )
     parser.add_argument(
         "--venv",
